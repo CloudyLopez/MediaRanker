@@ -2,7 +2,22 @@
 <p>Find me in app/views/works/index.html.erb</p>
 
 <ul>
+<h3>MOVIES</h3>
   <% @movies.each do |movie| %>
   <li> <%= movie.title %> </li>
+  <% end %>
+</ul>
+
+<ul>
+<h3>BOOKS</h3>
+  <% @books.each do |book| %>
+  <li> <%= link_to "#{book.title}", work_path(book.id) %> </li>
+  <% end %>
+</ul>
+
+<ul>
+<h3>ALBUMS</h3>
+  <% @albums.each do |album| %>
+  <li> <%= album.title %> </li>
   <% end %>
 </ul>
