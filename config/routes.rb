@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
-  get 'works/index'
-  root to: "works#index"
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-# root to: 'works#path'
-resources :works
+  resources :works
+  resources :users, only: %i[index show]
 
-
-
+  post 'works/:id/vote', to: 'works#vote', as: 'vote'
+  get '/login', to: 'users#login_form', as: 'login'
+  post '/login', to: 'users#login'
+  post '/logout', to: 'users#logout', as: 'logout'
 end
