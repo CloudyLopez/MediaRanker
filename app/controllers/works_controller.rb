@@ -4,11 +4,16 @@ class WorksController < ApplicationController
     @albums = Work.where(category: "album")
     @movies = Work.where(category: "movie")
     @books = Work.where(category: "book")
+    @spotlight = Work.all.sample(10)
 
   end
 
   def show
     @work = Work.find_by(id: params[:id])
+    if @work.nil? 
+      flash[:error] = "Unknown works"
+      redirect_to works_path
+    end
   end
 
   def new
