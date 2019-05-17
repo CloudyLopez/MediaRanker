@@ -4,7 +4,7 @@ favemov:
   description: goes to school
   publication_year: "1998"
   category: movie
-  cache_votes_total: 0 
+  cached_votes_total: 0 
 
 redp:
   title: Red Pie
@@ -12,5 +12,5 @@ redp:
   description: goes to school also
   publication_year: "1990"
   category: book
-  cache_votes_total: 0 
+  cached_votes_total: 0 
 
