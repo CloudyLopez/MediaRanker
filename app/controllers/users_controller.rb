@@ -1,3 +1,4 @@
+
 class UsersController < ApplicationController
   #   before_action :find_work, except: %i[index new create]
 
@@ -23,8 +24,11 @@ class UsersController < ApplicationController
 
       flash[:status] = :success
       flash[:message] = "Sucessfully logged in as user #{user.name}"
-      redirect_to home_path
+    else
+      user = User.create(name: name)
+      session[:user_id] = user.id
     end
+    redirect_to works_path
   end
 
   def logout
@@ -36,23 +40,22 @@ class UsersController < ApplicationController
 
   def upvote
     user = User.find_by(id: session[:user_id])
-    if user
+
+    unless user
+      flash[:status] = :error
+      flash[:message] = "Log in to vote"
+      redirect_to works_path
+    else
       @work = Work.find_by(id: params[:id])
       if user.voted_for? @work
-        flash[:status] = :error
-        flash[:message] = 'You may not vote for the same media twice.'
-        redirect_to work_path
+        flash[:error] = "You cannot upvote the same work twice"
+        redirect_to works_path
       else
         if @work.upvote_by user
-          flash[:status] = :success
-          flash[:message] = 'Successfully upvoted!'
-          redirect_to work_path(@work.id)
+          flash[:succes] = "Successfully vote"
+          redirect_to works_path
         end
       end
-    else
-      flash[:status] = :error
-      flash[:message] = 'You must be logged in to vote.'
-      redirect_to work_path
     end
   end
 end

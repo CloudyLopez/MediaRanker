@@ -1,12 +1,7 @@
 require 'test_helper'
 require 'pry'
 describe UsersController do
-  let (:user) do
-    User.create(
-      name: 'walden',
-      created_at: Date.parse('2001-01-01')
-    )
-  end
+  let (:user) { users(:one) }
 
   describe 'current' do
     it 'responds with 200 ok for a logged-in user' do
@@ -38,8 +33,9 @@ describe UsersController do
       perform_login
 
       work1 = works(:favemov)
+
       post upvote_path(work1.id)
-      expect(@work.cached_votes_total).must_equal 1
+      expect(work1.cached_votes_total).must_equal 1
     end
   end
 

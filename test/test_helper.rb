@@ -25,13 +25,13 @@ class ActiveSupport::TestCase
 
     login_data = {
       user: {
-        username: user.name
+        name: user.name
       }
     }
     post login_path, params: login_data
 
     expect(session[:user_id]).must_equal user.id
 
-    user
+    return user
   end
 end
