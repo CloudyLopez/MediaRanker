@@ -39,10 +39,10 @@ class WorksController < ApplicationController
     end
   end
 
-  def upvote
-    Work.upvote(@work)
-    redirect_to work_path(@work.id)
-  end
+  # def upvote
+  #   Work.upvote(@work)
+  #   redirect_to work_path(@work.id)
+  # end
 
   def destroy
     @work = Work.find_by(id: params[:id])
