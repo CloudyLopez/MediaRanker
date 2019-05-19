@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddCacheVotesToWorks < ActiveRecord::Migration[5.2]
   def change
     add_column :works, :cached_votes_total, :integer, default: 0
