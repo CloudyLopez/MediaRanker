@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,45 +12,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_17_214913) do
-
+ActiveRecord::Schema.define(version: 20_190_519_174_049) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension 'plpgsql'
 
-  create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'users', force: :cascade do |t|
+    t.string 'name'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "votes", id: :serial, force: :cascade do |t|
-    t.string "votable_type"
-    t.integer "votable_id"
-    t.string "voter_type"
-    t.integer "voter_id"
-    t.boolean "vote_flag"
-    t.string "vote_scope"
-    t.integer "vote_weight"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.index ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope"
-    t.index ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope"
+  create_table 'votes', force: :cascade do |t|
+    t.string 'votable_type'
+    t.bigint 'votable_id'
+    t.string 'voter_type'
+    t.bigint 'voter_id'
+    t.boolean 'vote_flag'
+    t.string 'vote_scope'
+    t.integer 'vote_weight'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index %w[votable_id _type vote_scope], name: 'index_votes_on_votable_id_and_votable_type_and_vote_scope'
+    t.index %w[votable_type votable_id], name: 'index_votes_on_votable_type_and_votable_id'
+    t.index %w[voter_id voter_type vote_scope], name: 'index_votes_on_voter_id_and_voter_type_and_vote_scope'
+    t.index %w[voter_type voter_id], name: 'index_votes_on_voter_type_and_voter_id'
   end
 
-  create_table "works", force: :cascade do |t|
-    t.string "category"
-    t.string "title"
-    t.string "publication_year"
-    t.string "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "creator"
-    t.integer "cached_votes_total", default: 0
-    t.integer "cached_votes_up", default: 0
-    t.integer "cached_votes_down", default: 0
-    t.index ["cached_votes_down"], name: "index_works_on_cached_votes_down"
-    t.index ["cached_votes_total"], name: "index_works_on_cached_votes_total"
-    t.index ["cached_votes_up"], name: "index_works_on_cached_votes_up"
+  create_table 'works', force: :cascade do |t|
+    t.string 'category'
+    t.string 'title'
+    t.string 'publication_year'
+    t.string 'description'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.string 'creator'
+    t.integer 'cached_votes_total', default: 0
+    t.integer 'cached_votes_up', default: 0
+    t.integer 'cached_votes_down', default: 0
+    t.index ['cached_votes_down'], name: 'index_works_on_cached_votes_down'
+    t.index ['cached_votes_total'], name: 'index_works_on_cached_votes_total'
+    t.index ['cached_votes_up'], name: 'index_works_on_cached_votes_up'
   end
-
 end
