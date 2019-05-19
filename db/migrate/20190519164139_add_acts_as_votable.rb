@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class AddActsAsVotable < ActiveRecord::Migration[5.2]
   def self.up
     create_table :votes do |t|
@@ -15,7 +13,6 @@ class AddActsAsVotable < ActiveRecord::Migration[5.2]
 
     add_index :votes, %i[voter_id voter_type vote_scope]
     add_index :votes, %i[votable_id votable_type vote_scope]
-
   end
 
   def self.down
