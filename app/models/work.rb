@@ -5,7 +5,7 @@ class Work < ApplicationRecord
   acts_as_votable
 
   def votes
-    votes = Vote.where('work_id = ?', id)
+    votes = Vote.where('votable_id = ?', id)
     puts 'vote.all.count', Vote.all.count
     votes
   end

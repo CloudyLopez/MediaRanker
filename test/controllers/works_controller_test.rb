@@ -1,8 +1,10 @@
-require "test_helper"
+# frozen_string_literal: true
+
+require 'test_helper'
 
 describe WorksController do
-  it "should get index" do
-    get works_index_url
+  it 'should get index' do
+    get works_path
     value(response).must_be :success?
   end
 
@@ -26,13 +28,6 @@ describe WorksController do
       # Assert
       must_respond_with :redirect
       expect(flash[:error]).must_equal 'Unknown works'
-    end
-
-  describe "create" do
-    # describe "Logged in users" do
-    #   before do
-    #     #figure this one out later
-    
     end
   end
 end
