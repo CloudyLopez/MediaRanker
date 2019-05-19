@@ -20,12 +20,11 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       flash[:status] = :success
       flash[:message] = "Successfully logged in as user #{user.name}"
-      e
-      lse
+    else
       user = User.create(name: name)
       session[:user_id] = user.id
     end
-    redirect to work_path
+    redirect_to works_path
   end
 
   def logout

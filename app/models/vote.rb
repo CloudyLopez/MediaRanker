@@ -19,7 +19,7 @@ class Vote < ApplicationRecord
     }[value]
   end
 
-  def work
-    Work.find(work_id)
-  end
+  # def work
+  #   @work = Work.find(work_id)
+  # end
 end
