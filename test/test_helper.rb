@@ -16,7 +16,6 @@ Minitest::Reporters.use!(
 
 # Uncomment for awesome colorful output
 # require "minitest/pride"
-
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all

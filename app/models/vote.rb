@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Vote < ApplicationRecord
   belongs_to :user
   belongs_to :work
@@ -17,8 +19,7 @@ class Vote < ApplicationRecord
     }[value]
   end
 
-  def work
-    Work.find(work_id)
-  end
+  # def work
+  #   @work = Work.find(work_id)
+  # end
 end
-

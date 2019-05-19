@@ -5,10 +5,10 @@
     
       <%= f.label :category %>
       <%= f.select :category, [ ["album"], ["book"], ["movie"] ]  %>
-
+  
       <%= f.label :title %>
       <%= f.text_field :title %>
-
+   
       <%= f.label :creator %>
       <%= f.text_field :creator %>
 
@@ -18,7 +18,7 @@
       <%= f.label :description %>
       <%= f.text_field :description %>
 
-      <%= f.submit @action_name %>
+      <%= f.submit 'create a new work' %>
 
   </div>
 <% end %>

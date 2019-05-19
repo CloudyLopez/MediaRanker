@@ -16,8 +16,16 @@
 
 <%= link_to "Edit", edit_work_path %>
 
-<%= link_to "Upvote", work_path %>
+<%= link_to "Upvote", upvote_path(@work.id), method: :post %>
 
 <%= link_to "Delete", work_path(@work.id), method: :delete %>
+
+</div>
+
+<div> 
+
+<%= @work.votes.each do |vote| %> 
+
+<% end %>
 
 </div>
